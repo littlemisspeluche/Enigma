@@ -4,20 +4,20 @@ import { getData } from "../../actions/home.action";
 import _ from "lodash";
 export default function Home() {
 	const { items } = useSelector(state => state.home);
-	console.log("Home -> items", items[0]);
-	const x = items.some(item => item.hasOwnProperty("error"));
-	console.log("Home -> x", x);
+	console.log("Home -> items", items);
+	// console.log("Home -> items", items[0]);
+	// const x = items.some(item => item.hasOwnProperty("error"));
+	// console.log("Home -> x", x);
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const fn = () => dispatch(getData());
-		fn();
-		const interval = setInterval(fn(), 3000);
-		// const interval =
-		// setInterval(() => {
-		// 	dispatch(getData());
-		// }, 3000);
+		// const fn = () => dispatch(getData());
+		// fn();
+		// const interval = setInterval(fn(), 3000);
+		const interval = setInterval(() => {
+			dispatch(getData());
+		}, 3000);
 		return () => clearInterval(interval);
 	}, []);
 
