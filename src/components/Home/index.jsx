@@ -5,9 +5,7 @@ import _ from "lodash";
 export default function Home() {
 	const { items } = useSelector(state => state.home);
 	console.log("Home -> items", items);
-	// console.log("Home -> items", items[0]);
-	// const x = items.some(item => item.hasOwnProperty("error"));
-	// console.log("Home -> x", x);
+	const error = items.some(item => item.hasOwnProperty("error"));
 
 	const dispatch = useDispatch();
 
@@ -18,9 +16,14 @@ export default function Home() {
 		const interval = setInterval(() => {
 			dispatch(getData());
 		}, 3000);
+
 		return () => clearInterval(interval);
 	}, []);
 
+	useEffect(() => {
+		const fn = () => dispatch(getData());
+		fn();
+	}, []);
 	return (
 		<div>
 			{(items.length > 1 &&
@@ -37,7 +40,7 @@ export default function Home() {
 						<div>Timestamp: {item.timestamp}</div>
 					</div>
 				))) ||
-				""}
+				(error && <p>error</p>)}
 		</div>
 	);
 }
