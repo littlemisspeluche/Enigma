@@ -1,5 +1,4 @@
 import * as actionsType from "./home.actionType";
-// import MoviesRepository from "../../../model/Repository/MoviesRepository";
 import ArticlesApi from "../api/index";
 
 export const getData = () => {

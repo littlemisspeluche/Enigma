@@ -10,9 +10,6 @@ export default function Home() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// const fn = () => dispatch(getData());
-		// fn();
-		// const interval = setInterval(fn(), 3000);
 		const interval = setInterval(() => {
 			dispatch(getData());
 		}, 3000);
